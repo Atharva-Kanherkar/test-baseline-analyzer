@@ -79,6 +79,21 @@ body {
 ::view-transition-old(main-content) {
   transform: translateX(-100%);
 }
+/* CSS Nesting - LIMITED baseline */
+.card {
+  & .title {
+    font-size: 1.5rem;
+  }
+
+  & .content {
+    padding: 1rem;
+  }
+}
+
+.grid-layout {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
 
 ::view-transition-new(main-content) {
   transform: translateX(100%);
