@@ -1,0 +1,85 @@
+/* Basic styles - widely supported */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Traditional flexbox - well supported */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Add these modern CSS features to trigger the analyzer */
+
+/* CSS Grid - HIGH baseline (widely supported) */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Container Queries - LIMITED baseline (newer feature) */
+.card-container {
+  container-type: inline-size;
+  container-name: card;
+}
+
+@container card (min-width: 400px) {
+  .card {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* :has() selector - LIMITED baseline (newer feature) */
+.card:has(.featured) {
+  border: 3px solid #007acc;
+  box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+}
+
+/* Aspect ratio - HIGH baseline */
+.media {
+  aspect-ratio: 16/9;
+  background: #f0f0f0;
+}
+
+/* Backdrop filter - LIMITED baseline */
+.modal-overlay {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* CSS Math functions - HIGH baseline */
+.responsive-padding {
+  padding: clamp(1rem, 5vw, 3rem);
+  margin: max(1rem, 2vw);
+}
+
+/* Logical properties - HIGH baseline */
+.content {
+  margin-inline: auto;
+  padding-block: 2rem;
+  border-inline-start: 4px solid #007acc;
+}
+
+/* View Transitions - LOW baseline (very new) */
+.page-transition {
+  view-transition-name: main-content;
+}
+
+::view-transition-old(main-content) {
+  transform: translateX(-100%);
+}
+
+::view-transition-new(main-content) {
+  transform: translateX(100%);
+}

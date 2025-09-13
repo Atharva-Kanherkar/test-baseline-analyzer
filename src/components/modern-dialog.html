@@ -1,0 +1,48 @@
+<!-- Modern HTML features -->
+<dialog id="modern-modal" class="modal">
+  <form method="dialog">
+    <header>
+      <h2>Modern Dialog</h2>
+      <button value="cancel" aria-label="Close">×</button>
+    </header>
+    
+    <main>
+      <p>This uses the native HTML dialog element with modern features.</p>
+      
+      <!-- Picture element with modern image formats -->
+      <picture>
+        <source srcset="hero.avif" type="image/avif">
+        <source srcset="hero.webp" type="image/webp">
+        <img src="hero.jpg" alt="Hero image" loading="lazy" decoding="async">
+      </picture>
+      
+      <!-- Details/Summary - well supported -->
+      <details>
+        <summary>Advanced Options</summary>
+        <fieldset>
+          <legend>Preferences</legend>
+          <label>
+            <input type="checkbox" name="notifications">
+            Enable notifications
+          </label>
+          <label>
+            <input type="color" name="theme-color" value="#007acc">
+            Theme color
+          </label>
+        </fieldset>
+      </details>
+    </main>
+    
+    <footer>
+      <button value="cancel">Cancel</button>
+      <button value="confirm">Confirm</button>
+    </footer>
+  </form>
+</dialog>
+
+<!-- Lazy loading images -->
+<section class="gallery">
+  <img data-src="image1.jpg" alt="Image 1" loading="lazy">
+  <img data-src="image2.jpg" alt="Image 2" loading="lazy">
+  <img data-src="image3.jpg" alt="Image 3" loading="lazy">
+</section>
