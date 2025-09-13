@@ -12,6 +12,6 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - uses: Atharva-Kanherkar/baseline-analyser-ts@v1.0.0  # Replace with your username
+    - uses: Atharva-Kanherkar/baseline-analyser-ts@v1.0.1  # Replace with your username
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
