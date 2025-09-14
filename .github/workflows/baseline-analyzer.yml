@@ -17,8 +17,11 @@ jobs:
       with:
         fetch-depth: 0
     - name: Run Baseline Analyzer
-      uses: Atharva-Kanherkar/baseline-analyser-ts@v1.2.2
+      uses: Atharva-Kanherkar/baseline-analyser-ts@v1.3.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         target-browsers: "chrome >= 90, firefox >= 88, safari >= 14"
         severity-filter: "medium"
+        enable-ai-review: true  
+        perplexity-api-key: "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"
+
