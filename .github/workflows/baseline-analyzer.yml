@@ -23,5 +23,5 @@ jobs:
         target-browsers: "chrome >= 90, firefox >= 88, safari >= 14"
         severity-filter: "medium"
         enable-ai-review: true  
-        perplexity-api-key: "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"
+        perplexity-api-key: ${{ secrets.PERPLEXITY_API_KEY }} 
 
