@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example with Compatibility Issues</title>
+    <style>
+        /* CSS Grid with container queries - newly supported */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        @container (min-width: 600px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* :has() pseudo-selector - newly supported */
+        .form-group:has(input:invalid) {
+            border: 2px solid red;
+        }
+
+        .card:has(.featured) {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Modern CSS features */
+        .modern-button {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .modern-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Modern Web Features</h2>
+            <p>This example demonstrates features that may have limited browser support.</p>
+            <button class="modern-button">Click me</button>
+        </div>
+
+        <div class="card featured">
+            <h2>Featured Card</h2>
+            <p>This card uses the :has() selector for styling.</p>
+        </div>
+
+        <!-- Dialog element - widely supported but included for completeness -->
+        <dialog id="modern-modal">
+            <h3>Modern Dialog</h3>
+            <p>This uses the native dialog element.</p>
+            <button onclick="document.getElementById('modern-modal').close()">Close</button>
+        </dialog>
+
+        <button onclick="document.getElementById('modern-modal').showModal()">Open Dialog</button>
+    </div>
+
+    <!-- Form with :has() selector -->
+    <form class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Image with loading="lazy" - limited support -->
+    <img src="https://via.placeholder.com/800x400" 
+         alt="Example image" 
+         loading="lazy" 
+         decoding="async">
+
+    <script>
+        // Modern JavaScript features
+        const dialog = document.getElementById('modern-modal');
+        
+        // Optional chaining and nullish coalescing
+        const userName = localStorage.getItem('user')?.name ?? 'Guest';
+        console.log(`Hello, ${userName}!`);
+
+        // Async/await with fetch
+        async function loadData() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Failed to load data:', error);
+            }
+        }
+
+        // Arrow functions and template literals
+        const buttons = document.querySelectorAll('.modern-button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert(`You clicked: ${button.textContent}`);
+            });
+        });
+    </script>
+</body>
+</html>
