@@ -1,0 +1,27 @@
+name: PR Baseline Analysis
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    name: Web Platform Compatibility Check
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Run Baseline Analyzer
+      uses: Atharva-Kanherkar/baseline-analyser-ts@v1.3.4
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        target-browsers: "chrome >= 90, firefox >= 88, safari >= 14"
+        severity-filter: "medium"
+        enable-ai-review: true  
+        perplexity-api-key: ${{ secrets.PERPLEXITY_API_KEY }} 
+
